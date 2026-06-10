@@ -3,7 +3,7 @@
 
 > **Co-First Author Publication:** This system is the implementation behind *"Intelligent Project Management: Hybrid AI-Driven Requirement Definition and Resource Allocation"*, accepted for publication in **Results in Engineering, Elsevier (2026)**.
 
---- 
+---
 
 ## Overview
 
@@ -13,7 +13,7 @@ Given a set of business requirements, the system produces:
 - Structured system requirements (via fine-tuned Flan-T5)
 - Subtask dependency graph (via DNN classifier)
 - Criticality scores for each subtask (via GAT2)
-- Optimal employee-task assignments (via GAT1 + Hungarian Algorithm)
+- Optimal employee-task assignments (via GAT1 + Priority-Based Sequential Assignment)
 
 **96% end-to-end planning accuracy · 200 tasks per project · <14s execution time**
 
@@ -51,8 +51,8 @@ Business Requirements (BR)
         ▼
 ┌─────────────────────┐
 │  Model 5: GAT1      │  Optimal employee-task assignment
-│  (PyTorch GAT +     │  AHP weighting + Hungarian Algorithm
-│   Hungarian)        │  200 complete assignments
+│  (PyTorch GAT +     │  AHP weighting + Priority-Based Sequential
+│   PBSA)             │  Assignment · 200 complete assignments
 └─────────────────────┘
         │
         ▼
@@ -73,7 +73,7 @@ PlanWise/
 │   ├── model2_classifier/       # Subtask relationship DNN classifier
 │   ├── model3_experience_dnn/   # Employee experience-level DNN
 │   ├── model4_gat2_criticality/ # GAT2 criticality score prediction
-│   └── model5_gat1_assignment/  # GAT1 + Hungarian employee assignment
+│   └── model5_gat1_assignment/  # GAT1 + PBSA employee assignment
 └── django_app/                  # Production web interface
 ```
 
@@ -87,7 +87,7 @@ PlanWise/
 | 2 | Subtask Classifier | DNN + TF-IDF (512→256→128) | TensorFlow/Keras | Multi-class classification |
 | 3 | Experience DNN | Feedforward DNN (→32→16) | PyTorch | Employee skill embedding |
 | 4 | GAT2 Criticality | 2-layer GAT, 6 node features | TensorFlow | R²=0.877, MAE=0.065 |
-| 5 | GAT1 Assignment | GAT + AHP + Hungarian | PyTorch Geometric | 200 optimal assignments |
+| 5 | GAT1 Assignment | GAT + AHP + PBSA | PyTorch Geometric | 200 optimal assignments |
 
 ---
 
@@ -95,8 +95,8 @@ PlanWise/
 
 - **GAT2 ground truth:** Normalized longest DAG path via Simple DFS cycle-breaking
 - **GAT1 cost matrix:** Min-shift applied post-infinity-replacement (scientifically correct for z-scored values)
+- **GAT1 assignment:** Priority-Based Sequential Assignment — subtasks sorted by criticality score, each assigned to the best available employee
 - **AHP weights:** β₁≈0.637 (duration), β₂≈0.258 (defects), β₃≈0.105 (experience), CR=0.039
-- **Hungarian vs Sinkhorn:** Hungarian chosen for academic defensibility and guaranteed optimal assignment on non-square matrices
 
 ---
 
@@ -126,7 +126,7 @@ scipy
 ## Publication
 
 **"Intelligent Project Management: Hybrid AI-Driven Requirement Definition and Resource Allocation"**  
-Nour ElSamra*, Nour Ahmed* · Dr. Yehia Kotb · Mohamed Kotb · Moutaz Haddara · Nourah AlSehali · Njood AlMutairi · Muneerah Alotaibi  
+Nour ElSamra*, Nour Ahmed* · Dr. Yehia Kotb · Nourah AlSehali · Njood AlMutairi · Muneerah Alotaibi . Mohamed Kotb · Moutaz Haddara  
 *Co-first authors*  
 Accepted for publication — *Results in Engineering*, Elsevier (2026)
 
