@@ -3,7 +3,7 @@
 
 > **Co-First Author Publication:** This system is the implementation behind *"Intelligent Project Management: Hybrid AI-Driven Requirement Definition and Resource Allocation"*, accepted for publication in **Results in Engineering, Elsevier (2026)**.
 
----
+--- 
 
 ## Overview
 
