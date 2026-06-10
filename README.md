@@ -7,7 +7,7 @@
 
 ## Overview
 
-PlanWise is an end-to-end AI pipeline that converts raw business requirements into fully assigned, dependency-aware project execution plans — automatically, in under 14 seconds.
+PlanWise is an end-to-end AI pipeline that converts raw business requirements into fully assigned, dependency-aware project execution plans - automatically, in under 14 seconds.
 
 Given a set of business requirements, the system produces:
 - Structured system requirements (via fine-tuned Flan-T5)
