@@ -128,7 +128,7 @@ scipy
 **"Intelligent Project Management: Hybrid AI-Driven Requirement Definition and Resource Allocation"**  
 Nour ElSamra*, Nour Ahmed* · Dr. Yehia Kotb* · Nourah AlSehali · Njood AlMutairi · Muneerah Alotaibi . Mohamed Kotb · Moutaz Haddara  
 *Co-first authors*  
-Accepted for publication — *Results in Engineering*, Elsevier (2026)
+Accepted for publication - *Results in Engineering*, Elsevier (2026)
 
 ---
 
